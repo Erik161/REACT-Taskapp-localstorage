@@ -9,9 +9,10 @@ const [newTaskName, setNewTaskName] = useState('');
 const handleSubmit = (e) =>{
     {/* It is used to not send the form data to a backend and the page is not refreshed.*/}
     e.preventDefault();
-    {/* It is used to store data within the browser and so we close the application or change the page or exit the application, the data will continue to be stored here.*/}
+    
     createNewTask(newTaskName)
-    localStorage.setItem('tasks', newTaskName)
+    {/* It is used to store data within the browser and so we close the application or change the page or exit the application, the data will continue to be stored here.*/}
+    
     setNewTaskName('')
 }
 
