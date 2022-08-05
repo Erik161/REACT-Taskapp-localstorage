@@ -1,7 +1,21 @@
 import React from 'react';
 import TaskRow from './TaskRow';
 
-const TaskTable = ({tasks, toggleTask}) => {
+const TaskTable = ({tasks, toggleTask, showCompleted = false}) => {
+
+
+    const taskTableRows = (doneValue) =>{
+        return(
+            tasks
+            .filter(task=> task.done === doneValue)
+            .map(task =>(
+                <TaskRow task={task} key={task.name} toggleTask={toggleTask} />
+            ))
+        )
+    }
+
+
+
   return (
     <table>
         <thead>
@@ -12,9 +26,7 @@ const TaskTable = ({tasks, toggleTask}) => {
 
         <tbody>
         {
-            tasks.map(task =>(
-            <TaskRow task={task} key={task.name} toggleTask={toggleTask} />
-            ))
+            taskTableRows(showCompleted)
         }
         </tbody>
     </table>
