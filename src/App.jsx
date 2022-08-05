@@ -23,7 +23,7 @@ const App = () => {
 
   const toggleTask = task =>{
     setTaskItems(
-      taskItems.map(t =>(t.name == task.name)?{...t, done: !t.done}: t)
+      taskItems.map(t =>(t.name === task.name)?{...t, done: !t.done}: t)
     )
   }
 
