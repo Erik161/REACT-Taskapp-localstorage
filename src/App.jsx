@@ -50,24 +50,22 @@ const App = () => {
 
 
   return (
-    <div className="App">
-      <TaskCreator createNewTask={createNewTask} />
-
-      <TaskTable tasks={taskItems} toggleTask={toggleTask} />
-
-      <VisibilityControl
-        isChecked={showCompleted}
-        setShowCompleted={(checked) => setShowCompleted(checked)}
-        cleanTasks={cleanTasks}
-      />
-
-      {
-        showCompleted === true && (
-          <TaskTable tasks={taskItems} toggleTask={toggleTask} showCompleted={showCompleted}/>
-        )
-      }
-
-    </div>
+    <main className="bg-dark vh-100 text-white">
+      <div className="container">
+        <TaskCreator createNewTask={createNewTask} />
+        <TaskTable tasks={taskItems} toggleTask={toggleTask} />
+        <VisibilityControl
+          isChecked={showCompleted}
+          setShowCompleted={(checked) => setShowCompleted(checked)}
+          cleanTasks={cleanTasks}
+        />
+        {
+          showCompleted === true && (
+            <TaskTable tasks={taskItems} toggleTask={toggleTask} showCompleted={showCompleted}/>
+          )
+        }
+      </div>
+    </main>
   );
 }
 
