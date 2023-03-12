@@ -20,16 +20,24 @@ const handleSubmit = (e) =>{
 
 
   return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="my-2 row">
       {/* It was added in a form so that when you hit enter in the input you can perform some action. */}
 
-                                                          {/* The ONCHANGE={} event is used to receive or capture what the user adds to the input. */}
-        <input
-        type="text"
-        placeholder="Enter a new Task"
-        value={newTaskName}
-        onChange={(e)=> setNewTaskName(e.target.value)}/>
-        <button> Save Task</button>
+        <div className="col-9">
+         {/* The ONCHANGE={} event is used to receive or capture what the user adds to the input. */}
+          <input
+          type="text"
+          placeholder="Enter a new Task"
+          value={newTaskName}
+          onChange={(e)=> setNewTaskName(e.target.value)}
+          className="form-control"
+          /> 
+        </div>
+
+        <div className="col-3">
+            <button className="btn btn-primary btn-sm"> Save Task</button>
+        </div>
+        
       </form>
   )
 }

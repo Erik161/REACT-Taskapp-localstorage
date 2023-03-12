@@ -3,7 +3,7 @@ import "./App.css";
 import TaskCreator from "./components/TaskCreator";
 import TaskTable from "./components/TaskTable";
 import VisibilityControl from "./components/VisibilityControl";
-
+import {Container} from './components/Container'
 
 
 
@@ -50,8 +50,9 @@ const App = () => {
 
 
   return (
-    <main className="bg-dark vh-100 text-white">
-      <div className="container">
+    <main className="bg-dark vh-100 text-white d-flex align-items-center">
+  
+      <Container>
         <TaskCreator createNewTask={createNewTask} />
         <TaskTable tasks={taskItems} toggleTask={toggleTask} />
         <VisibilityControl
@@ -64,7 +65,8 @@ const App = () => {
             <TaskTable tasks={taskItems} toggleTask={toggleTask} showCompleted={showCompleted}/>
           )
         }
-      </div>
+      </Container>
+
     </main>
   );
 }
