@@ -1,4 +1,9 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+
+const MySwal = withReactContent(Swal);
 
 const TaskCreator = ({createNewTask}) => {
 
@@ -14,6 +19,26 @@ const handleSubmit = (e) =>{
     {/* It is used to store data within the browser and so we close the application or change the page or exit the application, the data will continue to be stored here.*/}
     
     setNewTaskName('')
+
+    
+
+    {/* Added SweetAlert for new added task modal*/}
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'center',
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
+    Toast.fire({
+      icon: 'success',
+      title: 'New task created!'
+    })
 }
 
 
