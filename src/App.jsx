@@ -3,7 +3,11 @@ import "./App.css";
 import TaskCreator from "./components/TaskCreator";
 import TaskTable from "./components/TaskTable";
 import VisibilityControl from "./components/VisibilityControl";
-import {Container} from './components/Container'
+import {Container} from './components/Container';
+import Swal from "sweetalert2";
+
+
+
 
 
 
@@ -21,11 +25,34 @@ const App = () => {
   }
 
 
-  const toggleTask = task =>{
-    setTaskItems(
-      taskItems.map(t =>(t.name === task.name)?{...t, done: !t.done}: t)
-    )
+const toggleTask = task => {
+  const taskToUpdate = taskItems.find(t => t.name === task.name);
+  const newTaskItems = taskItems.map(t =>
+    t.name === task.name ? { ...t, done: !t.done } : t
+  );
+
+  setTaskItems(newTaskItems);
+
+  if (!taskToUpdate.done) {
+    // Only show SweetAlert if task was marked as done
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "center",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
+      didOpen: toast => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      }
+    });
+
+    Toast.fire({
+      icon: "success",
+      title: "Selected task finished!"
+    });
   }
+};
 
 
   useEffect(()=>{
