@@ -23,7 +23,7 @@ const handleSubmit = (e) =>{
     icon: 'success',
     title: 'New task created!',
     showConfirmButton: false,
-    timer: 2000
+    timer: 1000
   });
 }
 
